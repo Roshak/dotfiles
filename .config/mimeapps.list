@@ -6,7 +6,7 @@
 text/x-shellscript=text.desktop;
 x-scheme-handler/magnet=torrent.desktop;
 application/x-bittorrent=torrent.desktop;
-x-scheme-handler/mailto=mail.desktop;
+x-scheme-handler/mailto=brave-browser.desktop
 text/plain=text.desktop;
 application/postscript=pdf.desktop;
 application/pdf=pdf.desktop;
@@ -17,3 +17,4 @@ application/rss+xml=rss.desktop
 video/x-matroska=video.desktop
 x-scheme-handler/lbry=lbry.desktop
 inode/directory=file.desktop
+x-scheme-handler/postman=Postman.desktop

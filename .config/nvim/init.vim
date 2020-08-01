@@ -13,13 +13,18 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'jremmen/vim-ripgrep'
+Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 "Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'lukesmithxyz/vimling'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'kovetskiy/sxhkd-vim'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
+Plug 'w0rp/ale'
 Plug 'git@github.com:Valloric/YouCompleteMe.git'
 Plug 'git@github.com:mbbill/undotree.git'
 Plug 'ap/vim-css-color'
@@ -74,6 +79,19 @@ set clipboard+=unnamedplus
 	let g:netrw_winsize=25
 	let g:ctrlp_use_caching=0
 
+" ESLint
+	let g:ale_fixers = {
+	\ 'javascript': ['eslint']
+	\ }
+
+	highlight ALEError ctermbg=none cterm=undercurl
+	highlight ALEWarning ctermbg=none cterm=undercurl
+	let g:ale_sign_error = '❌'
+	let g:ale_sign_warning = '⚠️'
+
+	let g:ale_fix_on_save = 1
+
+
 "NerdTree
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
     if has('nvim')
@@ -81,6 +99,7 @@ set clipboard+=unnamedplus
     else
         let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
     endif
+
 " vimling:
 	nm <leader>d :call ToggleDeadKeys()<CR>
 	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
@@ -141,6 +160,10 @@ set clipboard+=unnamedplus
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 " Make after modifying dwmblocks config
  	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
+	autocmd BufWritePost ~/.local/src/dwm/config.h !cd ~/.local/src/dwm/; sudo make install && { killall -q dwm;setsid dwm & }
+	autocmd BufWritePost ~/.local/src/dmenu/config.h !cd ~/.local/src/dmenu/; sudo make install && { killall -q dmenu;setsid dmenu & }
+	autocmd BufWritePost ~/.local/src/st/config.h !cd ~/.local/src/st/; sudo make install && { killall -q st ;setsid st & }
+
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff
