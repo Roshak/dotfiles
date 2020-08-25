@@ -10,22 +10,20 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'dracula/vim'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'jremmen/vim-ripgrep'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/goyo.vim'
-"Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'lukesmithxyz/vimling'
-"Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'w0rp/ale'
-Plug 'git@github.com:Valloric/YouCompleteMe.git'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'git@github.com:mbbill/undotree.git'
 Plug 'ap/vim-css-color'
 call plug#end()
@@ -35,6 +33,7 @@ set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+colorscheme dracula
 
 " Some basics:
 	nnoremap c "_c
@@ -49,14 +48,14 @@ set clipboard+=unnamedplus
 	set smartindent
 	set incsearch
 
+" Auto indent
+	nnoremap <leader>w ggVG=<CR>
 " Open Undotree
 	map <leader>z :UndotreeShow<CR>
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	nnoremap <leader>o :setlocal spell! spelllang=en_us<CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
@@ -78,6 +77,7 @@ set clipboard+=unnamedplus
 	let g:netrw_browse_split=2
 	let g:netrw_winsize=25
 	let g:ctrlp_use_caching=0
+	let g:airline_powerline_fonts = 1
 
 " ESLint
 	let g:ale_fixers = {
@@ -88,9 +88,14 @@ set clipboard+=unnamedplus
 	highlight ALEWarning ctermbg=none cterm=undercurl
 	let g:ale_sign_error = '❌'
 	let g:ale_sign_warning = '⚠️'
-
 	let g:ale_fix_on_save = 1
 
+" coc.nvim
+	nmap <silent> <leader>dd <Plug>(coc-definition)
+	nmap <silent> <leader>dr <Plug>(coc-references)
+	nmap <silent> <leader>dj <Plug>(coc-implementation)
+	nmap <silent> <leader>ac <Plug>(coc-codeaction)
+	nmap <silent> <leader>qf <Plug>(coc-fix-current)
 
 "NerdTree
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -142,12 +147,6 @@ set clipboard+=unnamedplus
 " Save file as sudo on files that require root permission
 	command W :execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" Enable Goyo by default for mutt writing
-	autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
-	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
-
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritepre * %s/\n\+\%$//e
@@ -163,7 +162,6 @@ set clipboard+=unnamedplus
 	autocmd BufWritePost ~/.local/src/dwm/config.h !cd ~/.local/src/dwm/; sudo make install && { killall -q dwm;setsid dwm & }
 	autocmd BufWritePost ~/.local/src/dmenu/config.h !cd ~/.local/src/dmenu/; sudo make install && { killall -q dmenu;setsid dmenu & }
 	autocmd BufWritePost ~/.local/src/st/config.h !cd ~/.local/src/st/; sudo make install && { killall -q st ;setsid st & }
-
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff
