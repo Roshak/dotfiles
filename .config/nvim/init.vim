@@ -33,6 +33,7 @@ set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+set list lcs=tab:\┊\ 
 colorscheme dracula
 
 " Some basics:
@@ -62,9 +63,6 @@ colorscheme dracula
 	set splitbelow
 " Nerd tree
 	nnoremap <leader>n :NERDTreeToggle<CR>
-"Ycm
-	nnoremap <silent> <leader>gd :YcmCompleter GoTo<CR>
-	nnoremap <silent> <leader>gf :YcmCompleter FixIt<CR>
 
 	nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 	nnoremap <leader>ps :Rg<SPACE>
@@ -148,7 +146,10 @@ colorscheme dracula
 	command W :execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
+if expand('%:t') == 'init.vim'
+else
 	autocmd BufWritePre * %s/\s\+$//e
+endif
 	autocmd BufWritepre * %s/\n\+\%$//e
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
@@ -157,8 +158,8 @@ colorscheme dracula
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-" Make after modifying dwmblocks config
- 	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
+" Make after modifying all suckless software config
+	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
 	autocmd BufWritePost ~/.local/src/dwm/config.h !cd ~/.local/src/dwm/; sudo make install && { killall -q dwm;setsid dwm & }
 	autocmd BufWritePost ~/.local/src/dmenu/config.h !cd ~/.local/src/dmenu/; sudo make install && { killall -q dmenu;setsid dmenu & }
 	autocmd BufWritePost ~/.local/src/st/config.h !cd ~/.local/src/st/; sudo make install && { killall -q st ;setsid st & }
