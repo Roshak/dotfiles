@@ -30,3 +30,4 @@ cfst="cd $HOME/.local/src/st && $EDITOR $HOME/.local/src/st/config.h" \
 cfdmenu="cd $HOME/.local/src/dmenu && $EDITOR $HOME/.local/src/dmenu/config.h" \
 cfdwmblocks="cd $HOME/.local/src/dwmblocks && $EDITOR $HOME/.local/src/dwmblocks/config.h" \
 cfdwm="cd $HOME/.local/src/dwm && $EDITOR $HOME/.local/src/dwm/config.h" \
+pokemmo="cd $HOME/Downloads/PokeMMO && sh PokeMMO.sh"

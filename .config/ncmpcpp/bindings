@@ -402,16 +402,17 @@
 #def_key "f"
 #	find_item_forward
 
-def_key "+"
-    show_clock
 def_key "="
+    show_clock
+def_key "+"
     volume_up
 
 def_key "j"
     scroll_down
 def_key "k"
     scroll_up
-
+def_key "S"
+	stop
 def_key "ctrl-u"
     page_up
 #push_characters "kkkkkkkkkkkkkkk"
@@ -428,10 +429,8 @@ def_key "h"
     previous_column
 def_key "l"
     next_column
-
 def_key "."
     show_lyrics
-
 def_key "n"
     next_found_item
 def_key "N"

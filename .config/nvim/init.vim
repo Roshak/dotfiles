@@ -10,13 +10,12 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'dracula/vim'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'jremmen/vim-ripgrep'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jreybert/vimagit'
-Plug 'lukesmithxyz/vimling'
 Plug 'bling/vim-airline'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'yuezk/vim-js'
@@ -28,13 +27,16 @@ Plug 'git@github.com:mbbill/undotree.git'
 Plug 'ap/vim-css-color'
 call plug#end()
 
-set bg=light
+set bg=dark
 set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
 set list lcs=tab:\┊\ 
-colorscheme dracula
+
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
+let g:airline_theme='monokai_tasty'
 
 " Some basics:
 	nnoremap c "_c
@@ -102,13 +104,6 @@ colorscheme dracula
     else
         let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
     endif
-
-" vimling:
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	"imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	"imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
 
 " Shortcutting split navigation, saving a keypress:
 	nnoremap <leader>h :wincmd h<CR>
