@@ -169,6 +169,26 @@
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
+!! Monokai
+!*.foreground:   #d1d1d1
+!*.cursorColor:  #d1d1d1
+!*.color0:       #272822
+!*.color8:       #75715e
+!*.color1:       #f92672
+!*.color9:       #f92672
+!*.color2:       #a6e22e
+!*.color10:      #a6e22e
+!*.color3:       #f4bf75
+!*.color11:      #f4bf75
+!*.color4:       #66d9ef
+!*.color12:      #66d9ef
+!*.color5:       #ae81ff
+!*.color13:      #ae81ff
+!*.color6:       #a1efe4
+!*.color14:      #a1efe4
+!*.color7:       #f8f8f2
+!*.color15:      #f9f8f5
+
 /* *.background: .color0 */
 /* *.color256: 0#1d2021 */
 /* *.color257: 15#ebdbb2 */
