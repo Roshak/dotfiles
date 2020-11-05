@@ -31,4 +31,4 @@ alias cac="cd ${XDG_CACHE_HOME:-$HOME/.cache} && ls -a" \
 	cfdmenu="cd $HOME/.local/src/dmenu && $EDITOR $HOME/.local/src/dmenu/config.h" \
 	cfdwmblocks="cd $HOME/.local/src/dwmblocks && $EDITOR $HOME/.local/src/dwmblocks/config.h" \
 	cfdwm="cd $HOME/.local/src/dwm && $EDITOR $HOME/.local/src/dwm/config.h" \
-	pokemmo="cd $HOME/Downloads/PokeMMO && sh PokeMMO.sh"
+	pokemmo="cd $HOME/Downloads/PokeMMO && sh PokeMMO.sh" \
