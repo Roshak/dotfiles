@@ -10,7 +10,6 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'patstockwell/vim-monokai-tasty'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'jremmen/vim-ripgrep'
@@ -25,6 +24,7 @@ Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'git@github.com:mbbill/undotree.git'
 Plug 'ap/vim-css-color'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 set bg=dark
@@ -34,9 +34,8 @@ set nohlsearch
 set clipboard+=unnamedplus
 set list lcs=tab:\┊\ 
 
-let g:vim_monokai_tasty_italic = 1
-colorscheme vim-monokai-tasty
-let g:airline_theme='monokai_tasty'
+colorscheme dracula 
+let g:airline_theme='dracula'
 
 " Some basics:
 	nnoremap c "_c

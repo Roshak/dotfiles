@@ -28,3 +28,4 @@ x-scheme-handler/remmina=org.remmina.Remmina.desktop;
 application/x-remmina=org.remmina.Remmina.desktop;
 application/octet-stream=nvim.desktop;
 application/x-ole-storage=nvim.desktop;
+application/zip=file.desktop;

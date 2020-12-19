@@ -708,6 +708,7 @@ _comps=(
 'jdb' '_java'
 'jobs' '_jobs_builtin'
 'joe' '_joe'
+'john' '_john'
 'join' '_join'
 'jq' '_jq'
 'kdeconnect-cli' '_kdeconnect'

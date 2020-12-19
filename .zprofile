@@ -13,6 +13,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
+export FILE="pcmanfm"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
