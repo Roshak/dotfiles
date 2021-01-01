@@ -19,6 +19,7 @@ x-scheme-handler/spice=org.remmina.Remmina.desktop
 x-scheme-handler/vnc=org.remmina.Remmina.desktop
 x-scheme-handler/remmina=org.remmina.Remmina.desktop
 application/x-remmina=org.remmina.Remmina.desktop
+text/html=nvim.desktop
 
 [Added Associations]
 x-scheme-handler/rdp=org.remmina.Remmina.desktop;
@@ -29,3 +30,4 @@ application/x-remmina=org.remmina.Remmina.desktop;
 application/octet-stream=nvim.desktop;
 application/x-ole-storage=nvim.desktop;
 application/zip=file.desktop;
+text/html=nvim.desktop;

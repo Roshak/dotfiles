@@ -159,3 +159,4 @@ endif
 if &diff
     highlight! link DiffText MatchParen
 endif
+highlight Normal ctermbg=none
