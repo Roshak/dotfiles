@@ -239,6 +239,7 @@ _comps=(
 'chroot' '_chroot'
 'chrt' '_chrt'
 'chsh' '_chsh'
+'cht.sh' '_cht.sh'
 'ci' '_rcs'
 'cifsiostat' '_sysstat'
 'cinder' '_openstack'
@@ -698,7 +699,6 @@ _comps=(
 'jdb' '_java'
 'jobs' '_jobs_builtin'
 'joe' '_joe'
-'john' '_john'
 'join' '_join'
 'jq' '_jq'
 'kdeconnect-cli' '_kdeconnect'
@@ -1603,8 +1603,8 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _nvm _calibre _code _code-oss _curl \
-            _john _libinput _loginctl _mkinitcpio _mpv \
+autoload -Uz _nvm _calibre _cht.sh _code _code-oss \
+            _curl _libinput _loginctl _mkinitcpio _mpv \
             _pacman _pulseaudio _rg _tremc _xwallpaper \
             _yay _youtube-dl _zathura _cdr _all_labels \
             _all_matches _alternative _approximate _arg_compile _arguments \
@@ -1760,5 +1760,5 @@ autoload -Uz +X _call_program
 typeset -gUa _comp_assocs
 _comp_assocs=( '' )
 
-#omz revision: e5af22cca6a07c9be52fe48810faaa08261e4d15
+#omz revision: c52e646bb7b109e15f6dc4047b29ca8c8e029433
 #omz fpath: /home/gasta/.config/zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions /home/gasta/.config/zsh/.oh-my-zsh/plugins/zsh_reload /home/gasta/.config/zsh/.oh-my-zsh/plugins/zsh-interactive-cd /home/gasta/.config/zsh/.oh-my-zsh/plugins/nvm /home/gasta/.config/zsh/.oh-my-zsh/plugins/git /home/gasta/.config/zsh/.oh-my-zsh/functions /home/gasta/.config/zsh/.oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/functions/Calendar /usr/share/zsh/functions/Chpwd /usr/share/zsh/functions/Completion /usr/share/zsh/functions/Completion/Base /usr/share/zsh/functions/Completion/Linux /usr/share/zsh/functions/Completion/Unix /usr/share/zsh/functions/Completion/X /usr/share/zsh/functions/Completion/Zsh /usr/share/zsh/functions/Exceptions /usr/share/zsh/functions/Math /usr/share/zsh/functions/MIME /usr/share/zsh/functions/Misc /usr/share/zsh/functions/Newuser /usr/share/zsh/functions/Prompts /usr/share/zsh/functions/TCP /usr/share/zsh/functions/VCS_Info /usr/share/zsh/functions/VCS_Info/Backends /usr/share/zsh/functions/Zftp /usr/share/zsh/functions/Zle
