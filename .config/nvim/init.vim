@@ -24,6 +24,7 @@ Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'git@github.com:mbbill/undotree.git'
 Plug 'ap/vim-css-color'
+Plug 'mhinz/vim-startify'
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
@@ -117,7 +118,7 @@ let g:airline_theme='dracula'
 	nnoremap S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-	nnoremap <leader>c :w! \| !compiler <c-r>%<CR>
+	nnoremap <leader>c :w! \| !compiler <c-r>%<CR><CR>
 
 " Open corresponding .pdf/.html or preview
 	nnoremap <leader>p :!opout <c-r>%<CR><CR>

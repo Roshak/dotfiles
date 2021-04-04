@@ -27,6 +27,7 @@ plugins=(
 	zsh-interactive-cd
 	zsh_reload
 	zsh-autosuggestions
+	virtualenv
 )
 source $ZSH/oh-my-zsh.sh
 

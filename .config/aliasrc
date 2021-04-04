@@ -14,17 +14,20 @@ alias \
 	ffmpeg="ffmpeg -hide_banner"
 
 # Colorize commands when possible.
+	#ls="ls -hN --color=auto --group-directories-first" \
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
+	ls="exa --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
 
 # These common commands are just too long! Abbreviate them.
+	#ll="ls -la" \
 alias \
 	ka="killall" \
-	g="git" \
-	ll="ls -la" \
+	g="lazygit" \
+	ll="exa -la --group-directories-first" \
+	l="exa -lah --group-directories-first" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
@@ -44,3 +47,4 @@ alias \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
+	du="du -h --max-depth=1 | sort -hr" \
