@@ -20,6 +20,7 @@ x-scheme-handler/vnc=org.remmina.Remmina.desktop
 x-scheme-handler/remmina=org.remmina.Remmina.desktop
 application/x-remmina=org.remmina.Remmina.desktop
 text/html=nvim.desktop
+application/x-java-archive=userapp-java -jar-N9U440.desktop
 
 [Added Associations]
 x-scheme-handler/rdp=org.remmina.Remmina.desktop;
@@ -33,3 +34,4 @@ application/zip=file.desktop;
 text/html=nvim.desktop;
 image/png=org.gnome.gThumb.desktop;
 image/jpeg=org.gnome.gThumb.desktop;
+application/x-java-archive=userapp-java -jar-N9U440.desktop;

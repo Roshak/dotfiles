@@ -26,8 +26,8 @@ alias \
 alias \
 	ka="killall" \
 	g="lazygit" \
-	ll="exa -la --group-directories-first" \
-	l="exa -lah --group-directories-first" \
+	ll="exa -la --icons --group-directories-first" \
+	l="exa -lah --icons --group-directories-first" \
 	trem="transmission-remote" \
 	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
@@ -48,3 +48,4 @@ alias \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
 	du="du -h --max-depth=1 | sort -hr" \
+	yays="yay -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'yay -Si {1}' | cut -d \" \" -f 1 | xargs -ro yay -S" \

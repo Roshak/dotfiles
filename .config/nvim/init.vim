@@ -20,7 +20,6 @@ Plug 'kovetskiy/sxhkd-vim'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
-Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'git@github.com:mbbill/undotree.git'
 Plug 'ap/vim-css-color'
@@ -79,18 +78,15 @@ let g:airline_theme='dracula'
 	let g:ctrlp_use_caching=0
 	let g:airline_powerline_fonts = 1
 
-" ESLint
-	let g:ale_fixers = {
-	\ 'javascript': ['eslint']
-	\ }
-
-	highlight ALEError ctermbg=none cterm=undercurl
-	highlight ALEWarning ctermbg=none cterm=undercurl
-	let g:ale_sign_error = '❌'
-	let g:ale_sign_warning = '⚠️'
-	let g:ale_fix_on_save = 1
-
 " coc.nvim
+	let g:coc_global_extensions = [
+		\'coc-snippets', 
+		\'coc-pairs',
+		\'coc-eslint',
+		\'coc-tsserver',
+		\'coc-prettier',
+		\'coc-json',
+		\	]
 	nmap <silent> <leader>dd <Plug>(coc-definition)
 	nmap <silent> <leader>dr <Plug>(coc-references)
 	nmap <silent> <leader>dj <Plug>(coc-implementation)
