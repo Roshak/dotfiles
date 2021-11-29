@@ -79,6 +79,9 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
 
+au TabLeave * let g:lasttab = tabpagenr()
+nnoremap <silent> <tab> :exe "tabn ".g:lasttab<CR>
+
 "Plugin Options
 if executable('rg')
 	let g:rg_derive_root='true'
