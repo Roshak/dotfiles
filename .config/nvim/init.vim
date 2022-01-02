@@ -31,7 +31,8 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'neovim/nvim-lspconfig'
-	Plug 'kabouzeid/nvim-lspinstall', {'branch': 'main'}
+	"Plug 'kabouzeid/nvim-lspinstall', {'branch': 'main'}
+	Plug 'williamboman/nvim-lsp-installer'
 	Plug 'glepnir/lspsaga.nvim', {'branch': 'main'}
     Plug 'hrsh7th/nvim-compe'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
