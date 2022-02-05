@@ -20,7 +20,7 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 	Plug 'ryanoasis/vim-devicons'
 	
 	"Plug 'bling/vim-airline'
-    Plug 'glepnir/galaxyline.nvim', { 'branch': 'main' }
+    Plug 'NTBBloodbath/galaxyline.nvim', { 'branch': 'main' }
     Plug 'kyazdani42/nvim-web-devicons'  " needed for galaxyline icons
 
 	Plug 'git@github.com:mbbill/undotree.git'

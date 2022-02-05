@@ -24,7 +24,7 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
-bindkey -v
+bindkey -e
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
@@ -80,6 +80,10 @@ bindkey '^e' edit-command-line
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+eval "$(starship init zsh)"
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
