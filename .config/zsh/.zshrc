@@ -84,6 +84,7 @@ bindkey '^e' edit-command-line
 eval "$(starship init zsh)"
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/nvm/init-nvm.sh
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

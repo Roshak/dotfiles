@@ -10,14 +10,13 @@
 
 # export STATUSBAR="i3blocks" # Uncomment this line when using i3.
 
-[ -f ~/.xprofile ] && . ~/.xprofile
-sh ~/.config/screenlayout
+[ -f ~/.xprofile ] &&  ~/.xprofile
+# sh ~/.config/screenlayout
 
 # Your default LARBS WM is determined in your `~/.profile` on login.  Here we
 # run the proper command to run when the graphical environment starts.
 
 # Comment/uncomment these lines depending on what wm you want to use. Also
 # check the i3blocks line above.
-ssh-agent
-
+# ssh-agent
 exec dbus-launch --exit-with-session dwm
