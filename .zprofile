@@ -64,6 +64,8 @@ export JAVA_FONTS=/usr/share/fonts/TTF
 #export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export LOCATION="Alessandria"
 
+export DIFFPROG="nvim -d $1"
+
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
 fi=📃:\

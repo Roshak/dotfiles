@@ -1,7 +1,9 @@
 #!/bin/sh
 
 # Use neovim for vim if present.
-command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+ alias \
+	vim="nvim" \
+	vimdiff="nvim -d"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
@@ -9,13 +11,12 @@ alias \
 	mv="mv -iv" \
 	rm="rm -vI" \
 	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
+	yt="yt-dlp --add-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner" \
 	sxiv="nsxiv -s" \
 	mpv="mpv --hwdec=auto"
 # Colorize commands when possible.
-	#ls="ls -hN --color=auto --group-directories-first" \
 alias \
 	ls="exa --group-directories-first" \
 	grep="grep --color=auto" \
@@ -23,14 +24,12 @@ alias \
 	ccat="highlight --out-format=ansi"
 
 # These common commands are just too long! Abbreviate them.
-	#ll="ls -la" \
 alias \
 	ka="killall" \
 	g="lazygit" \
-	ll="exa -la --icons --group-directories-first" \
+	ll="exa -lah --icons --group-directories-first" \
 	l="exa -lah --icons --group-directories-first" \
 	trem="transmission-remote" \
-	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
 	f="$FILE" \
 	e="$EDITOR" \
