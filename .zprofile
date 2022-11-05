@@ -11,7 +11,7 @@ export PATH="$PATH:/home/gasta/.local/share/cargo/bin:$(du "$HOME/.local/bin" | 
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="firefox"
 export READER="zathura"
 export FILE="pcmanfm"
 
@@ -20,13 +20,11 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
-export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-#export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
@@ -36,13 +34,15 @@ export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/config.toml"
-export UNISON="${XDG_DATA_HOME:-$HOME/.local/share}/unison"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export LIBVA_DRIVER_NAME="nvidia"
 export CHROME_EXECUTABLE="/bin/brave"
 
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
 # Other program settings:
-export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS=-R
@@ -61,7 +61,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export JAVA_FONTS=/usr/share/fonts/TTF
 
-#export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export LOCATION="Alessandria"
 
 export DIFFPROG="nvim -d $1"
@@ -141,15 +140,8 @@ ex=🎯:\
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
-if pacman -Qs libxft-bgra >/dev/null 2>&1; then
-	# Start graphical server on tty1 if not already running.
-	[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx
-else
-	echo "\033[31mIMPORTANT\033[0m: Note that \033[32m\`libxft-bgra\`\033[0m must be installed for this build of dwm.
-Please run:
-	\033[32myay -S libxft-bgra\033[0m
-and replace \`libxft\`"
-fi
+# Start graphical server on tty1 if not already running.
+[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx
 
  # Switch escape and caps if tty and no passwd required:
  sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
