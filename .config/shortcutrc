@@ -33,3 +33,4 @@ alias cac="cd ${XDG_CACHE_HOME:-$HOME/.cache} && ls -a" \
 	cfdwm="cd $HOME/.local/src/dwm && $EDITOR $HOME/.local/src/dwm/config.h" \
 	pokemmo="cd $HOME/Downloads/PokeMMO && sh PokeMMO.sh" \
 	mtgadraft="cd $HOME/Downloads/MTGA_Draft_17Lands && python main.py -f /mnt/nvme/Games/Heroic/Prefixes/MagicTheGathering/drive_c/users/gasta/AppData/LocalLow/Wizards\ Of\ The\ Coast/MTGA/Player.log" \
+	xmage="cd $HOME/Downloads/xmage && java -jar XMageLauncher-0.3.8.jar" \
