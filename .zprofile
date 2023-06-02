@@ -61,9 +61,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true'
 export JAVA_FONTS=/usr/share/fonts/TTF
 
+export NO_AT_BRIDGE=1
+
 export LOCATION="Alessandria"
 
-export DIFFPROG="nvim -d $1"
+export DIFFPROG="nvim -d pacdiff" 
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
