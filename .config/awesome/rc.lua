@@ -136,7 +136,7 @@ local taglist_buttons = gears.table.join(
 local tasklist_buttons = gears.table.join(
                      awful.button({ }, 1, function (c)
                                               if c == client.focus then
-                                                  c.minimized = true
+                                                 -- c.minimized = true
                                               else
                                                   c:emit_signal(
                                                       "request::activate",
@@ -184,9 +184,10 @@ awful.screen.connect_for_each_screen(function(s)
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
                            awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+                           awful.button({ }, 3, function () awful.layout.inc(-1) end)))
+                           --awful.button({ }, 4, function () awful.layout.inc( 1) end),
+                           --awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -238,9 +239,9 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    --awful.button({ }, 3, function () mymainmenu:toggle() end),
+    --awful.button({ }, 4, awful.tag.viewnext),
+    --awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
@@ -248,10 +249,10 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+    awful.key({ modkey,           }, "Left", function () awful.screen.focus_relative(1) end,
+              {description = "view previous", group = "screen"}),
+    awful.key({ modkey,           }, "Right", function () awful.screen.focus_relative(-1) end,
+              {description = "view next", group = "screen"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
@@ -273,7 +274,7 @@ globalkeys = gears.table.join(
               {description = "Open Browser", group = "awesome"}),
     awful.key({ modkey,           }, "d", function () awful.spawn("dmenu_run") end,
               {description = "dmenu_run", group = "awesome"}),
-    awful.key({ modkey,           }, "Backspace", function () awful.spawn("sysact") end,
+    awful.key({ modkey, "Control" }, "q", function () awful.spawn("sysact") end,
               {description = "sysact", group = "awesome"}),
     awful.key({ modkey,           }, "e", function () awful.spawn("pcmanfm") end,
               {description = "Open pcmanfm", group = "awesome"}),
@@ -281,6 +282,10 @@ globalkeys = gears.table.join(
               {description = "Open Btop", group = "awesome"}),
     awful.key({ modkey,           }, "r", function () awful.spawn(terminal.." -e lf") end,
               {description = "Open lf", group = "awesome"}),
+    awful.key({            }, "Print", function () awful.spawn("/bin/sh -c 'maim -s | xclip -selection clipboard -t image/png'") end,
+              {description = "Screenshot selection to clipboard", group = "awesome"}),
+    awful.key({modkey            }, "Print", function () awful.spawn("maimpick") end,
+              {description = "Screenshot selection tool", group = "awesome"}),
 
 
 
@@ -289,10 +294,10 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
-              {description = "focus the next screen", group = "screen"}),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-              {description = "focus the previous screen", group = "screen"}),
+--    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+--              {description = "focus the next screen", group = "screen"}),
+--    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
+--              {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
@@ -486,9 +491,13 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.centered+awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
+
+    {rule_any = {
+      type = {"dialog"},properties = { floating = true }
+    }},
 
     -- Floating clients.
     { rule_any = {
@@ -534,10 +543,17 @@ awful.rules.rules = {
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
-client.connect_signal("manage", function (c)
+client.connect_signal("request::manage", function (c, ctx)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
+    if c.transient_for then
+      awful.placement.centered(c, {parent = c.transient_for})
+    end
+    --if c.floating and ctx == "new" then
+    --  client.placement = awful.placement.centered + awful.placement.no_overlap + awful.placement.no_offscreen
+    --end
+
 
     if awesome.startup
       and not c.size_hints.user_position
