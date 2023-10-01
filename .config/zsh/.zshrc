@@ -83,6 +83,8 @@ bindkey '^e' edit-command-line
 
 eval "$(starship init zsh)"
 
+eval "$(direnv hook zsh)"
+
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Load syntax highlighting; should be last.
