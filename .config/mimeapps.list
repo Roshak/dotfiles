@@ -32,6 +32,8 @@ application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop
+application/zip=xarchiver.desktop
+x-scheme-handler/etcher=balena-etcher.desktop
 
 [Added Associations]
 x-scheme-handler/rdp=org.remmina.Remmina.desktop;
@@ -41,7 +43,7 @@ x-scheme-handler/remmina=org.remmina.Remmina.desktop;
 application/x-remmina=org.remmina.Remmina.desktop;
 application/octet-stream=nvim.desktop;
 application/x-ole-storage=nvim.desktop;
-application/zip=file.desktop;
+application/zip=file.desktop;xarchiver.desktop;
 text/html=nvim.desktop;firefox.desktop;
 image/png=eliv.desktop;org.gnome.gThumb.desktop;org.nomacs.ImageLounge.desktop;nsxiv.desktop;
 image/jpeg=eliv.desktop;org.gnome.gThumb.desktop;org.nomacs.ImageLounge.desktop;nsxiv.desktop;

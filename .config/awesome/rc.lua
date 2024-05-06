@@ -18,6 +18,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local switcher = require("awesome-switcher")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -118,6 +120,8 @@ music = awful.widget.watch('music', 10)
 volume = awful.widget.watch('volume', 20)
 torrent = awful.widget.watch('torrent', 20)
 tbox_separator = wibox.widget.textbox(" | ")
+
+
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -278,21 +282,26 @@ globalkeys = gears.table.join(
 
     --CUSTOM BINDS
     awful.key({ modkey, }, "w", function() awful.spawn(Browser) end,
-        { description = "Open Browser", group = "awesome" }),
+        { description = "Open Browser", group = "Applications" }),
     awful.key({ modkey, }, "d", function() awful.spawn("dmenu_run") end,
         { description = "dmenu_run", group = "awesome" }),
     awful.key({ modkey, "Control" }, "q", function() awful.spawn("sysact") end,
         { description = "sysact", group = "awesome" }),
     awful.key({ modkey, }, "e", function() awful.spawn("pcmanfm") end,
-        { description = "Open pcmanfm", group = "awesome" }),
+        { description = "Open pcmanfm", group = "Applications" }),
     awful.key({ modkey, "Shift" }, "b", function() awful.spawn(terminal .. " -e btop") end,
-        { description = "Open Btop", group = "awesome" }),
+        { description = "Open Btop", group = "Applications" }),
+    awful.key({ modkey, "Shift" }, "h",
+        function() awful.spawn("xdg-open heroic://launch/sideload/kZ4mduxwMzneacVczLhPpu") end,
+        { description = "Open Battle.net", group = "Applications" }),
+    awful.key({ modkey, }, "h", function() awful.spawn("heroic") end,
+        { description = "Heroic Game Launcher", group = "Applications" }),
     awful.key({ modkey, }, "r", function() awful.spawn(terminal .. " -e lf") end,
-        { description = "Open lf", group = "awesome" }),
+        { description = "Open lf", group = "Applications" }),
     awful.key({}, "Print", function() awful.spawn("/bin/sh -c 'maim -s | xclip -selection clipboard -t image/png'") end,
-        { description = "Screenshot selection to clipboard", group = "awesome" }),
+        { description = "Screenshot selection to clipboard", group = "Applications" }),
     awful.key({ modkey }, "Print", function() awful.spawn("maimpick") end,
-        { description = "Screenshot selection tool", group = "awesome" }),
+        { description = "Screenshot selection tool", group = "Applications" }),
 
 
 
@@ -416,7 +425,15 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end,
-        { description = "(un)maximize horizontally", group = "client" })
+        { description = "(un)maximize horizontally", group = "client" }),
+    awful.key({ "Mod1", }, "Tab",
+        function()
+            switcher.switch(1, "Mod1", "Alt_L", "Shift", "Tab")
+        end),
+    awful.key({ "Mod1", "Shift" }, "Tab",
+        function()
+            switcher.switch(-1, "Mod1", "Alt_L", "Shift", "Tab")
+        end)
 )
 
 -- Bind all key numbers to tags.
@@ -515,7 +532,7 @@ awful.rules.rules = {
     {
         rule_any = {
             instance = {
-                "DTA", -- Firefox addon DownThemAll.
+                "DTA",   -- Firefox addon DownThemAll.
                 "copyq", -- Includes session name in class.
                 "pinentry",
             },
@@ -524,7 +541,7 @@ awful.rules.rules = {
                 "Blueman-manager",
                 "Gpick",
                 "Kruler",
-                "MessageWin", -- kalarm.
+                "MessageWin",  -- kalarm.
                 "nsxiv",
                 "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
                 "Wpa_gui",
@@ -537,9 +554,9 @@ awful.rules.rules = {
                 "Event Tester", -- xev.
             },
             role = {
-                "AlarmWindow", -- Thunderbird's calendar.
+                "AlarmWindow",   -- Thunderbird's calendar.
                 "ConfigManager", -- Thunderbird's about:config.
-                "pop-up",  -- e.g. Google Chrome's (detached) Developer Tools.
+                "pop-up",        -- e.g. Google Chrome's (detached) Developer Tools.
             }
         },
         properties = { floating = true }

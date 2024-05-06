@@ -16,6 +16,7 @@ alias \
 	ffmpeg="ffmpeg -hide_banner" \
 	sxiv="nsxiv -s" \
 	mpv="mpv --hwdec=auto"
+
 # Colorize commands when possible.
 alias \
 	ls="exa --group-directories-first" \
