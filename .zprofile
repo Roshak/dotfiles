@@ -34,7 +34,7 @@ export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/starship/config.toml"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
-export LIBVA_DRIVER_NAME="nvidia"
+export LIBVA_DRIVER_NAME="radeonsi"
 export CHROME_EXECUTABLE="/bin/brave"
 
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
